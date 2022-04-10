@@ -2,9 +2,9 @@ git_clone_suffix = '.git'
 
 github_accounts = {
 
-    'iCenter Public':{
+    'jameskabbes':{
 
-        'url_base': 'https://github.com/AmerenICenter',
+        'url_base': 'https://github.com/jameskabbes',
         'add_to_pythonpath': True,
         'repos': {
             'analytics_packages',
@@ -23,17 +23,6 @@ github_accounts = {
             'smart_documentation',
             'user_profile'
         },
-    },
-
-    'iCenter Enterprise':{
-
-        'url_base': 'https://github.ameren.com/iCenter',
-        'add_to_pythonpath': False,
-        'repos': {
-            'data_team',
-            'Database-Playground'
-        }
-
     }
 
 }#end github accounts

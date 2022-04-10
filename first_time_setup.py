@@ -4,25 +4,9 @@ import platform
 
 # It is imperative that this repository works independently other modules/installations
 
-print ('''
-
- .----------------. .----------------. .----------------. .-----------------..----------------. .----------------. .----------------. 
-| .--------------. | .--------------. | .--------------. | .--------------. | .--------------. | .--------------. | .--------------. |
-| |     _____    | | |     ______   | | |  _________   | | | ____  _____  | | |  _________   | | |  _________   | | |  _______     | |
-| |    |_   _|   | | |   .' ___  |  | | | |_   ___  |  | | ||_   \|_   _| | | | |  _   _  |  | | | |_   ___  |  | | | |_   __ \    | |
-| |      | |     | | |  / .'   \_|  | | |   | |_  \_|  | | |  |   \ | |   | | | |_/ | | \_|  | | |   | |_  \_|  | | |   | |__) |   | |
-| |      | |     | | |  | |         | | |   |  _|  _   | | |  | |\ \| |   | | |     | |      | | |   |  _|  _   | | |   |  __ /    | |
-| |     _| |_    | | |  \ `.___.'\  | | |  _| |___/ |  | | | _| |_\   |_  | | |    _| |_     | | |  _| |___/ |  | | |  _| |  \ \_  | |
-| |    |_____|   | | |   `._____.'  | | | |_________|  | | ||_____|\____| | | |   |_____|    | | | |_________|  | | | |____| |___| | |
-| |              | | |              | | |              | | |              | | |              | | |              | | |              | |
-| '--------------' | '--------------' | '--------------' | '--------------' | '--------------' | '--------------' | '--------------' |
- '----------------' '----------------' '----------------' '----------------' '----------------' '----------------' '----------------' 
-
-''')
-
 print ()
 print ()
-input('Welcome to the iCenter Garden! Press enter to get started: ')
+input('Welcome to the_garden! Press enter to get started: ')
 print ()
 print ()
 
@@ -30,8 +14,14 @@ print ()
 #  1. Clone the Repos
 ###
 
+if platform.system() == 'Windows':
+    ENV_VAR_SPLIT = ';'
+else:
+    ENV_VAR_SPLIT = ':'
+
+#
 OG_PYTHONPATH = os.getenv('PYTHONPATH')
-pythonpaths = OG_PYTHONPATH.split( ';' )
+pythonpaths = OG_PYTHONPATH.split( ENV_VAR_SPLIT )
 
 cwd = os.getcwd().replace( '\\','/' ) 
 parent_dir = '/'.join( cwd.split( '/' )[:-1] )
@@ -83,7 +73,9 @@ print ()
 print ('2. Export src dirs to PYTHONPATH')
 print ()
 
-PYTHONPATH = ';'.join( pythonpaths )
+
+
+PYTHONPATH = ENV_VAR_SPLIT.join( pythonpaths )
 print ('PYTHONPATH = ' + str(PYTHONPATH))
 
 if PYTHONPATH != OG_PYTHONPATH:
@@ -91,7 +83,7 @@ if PYTHONPATH != OG_PYTHONPATH:
     
     if platform.system() == 'Windows':
         os.system( 'setx PYTHONPATH ' + PYTHONPATH )
-    elif platform.system() == 'Linux' or platform.system() == 'Darwin':
+    else:
         os.system( 'export PYTHONPATH=' + PYTHONPATH )
 else:
     print ('No changes made to PYTHONPATH')
