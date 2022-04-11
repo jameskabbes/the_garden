@@ -20,8 +20,11 @@ else:
     ENV_VAR_SPLIT = ':'
 
 #
+pythonpaths = []
+
 OG_PYTHONPATH = os.getenv('PYTHONPATH')
-pythonpaths = OG_PYTHONPATH.split( ENV_VAR_SPLIT )
+if OG_PYTHONPATH != None:
+    pythonpaths = OG_PYTHONPATH.split( ENV_VAR_SPLIT )
 
 cwd = os.getcwd().replace( '\\','/' ) 
 parent_dir = '/'.join( cwd.split( '/' )[:-1] )
@@ -74,17 +77,20 @@ print ('2. Export src dirs to PYTHONPATH')
 print ()
 
 
-
 PYTHONPATH = ENV_VAR_SPLIT.join( pythonpaths )
 print ('PYTHONPATH = ' + str(PYTHONPATH))
 
 if PYTHONPATH != OG_PYTHONPATH:
     print ('Overwriting PYTHONPATH. You will need to RESTART your machine for changes to take effect.')
     
+
     if platform.system() == 'Windows':
-        os.system( 'setx PYTHONPATH ' + PYTHONPATH )
+        command = 'setx PYTHONPATH ' + PYTHONPATH
     else:
-        os.system( 'export PYTHONPATH=' + PYTHONPATH )
+        command = 'export PYTHONPATH=' + PYTHONPATH 
+    os.system( command )
+    print (command)
+
 else:
     print ('No changes made to PYTHONPATH')
 
