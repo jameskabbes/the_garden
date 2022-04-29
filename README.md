@@ -1,21 +1,37 @@
-[GitHub Pages](https://jameskabbes.github.io/the_garden/)
+[GitHub Pages](https://jameskabbes.github.io/the_garden)<br>
+[PyPI](https://pypi.org/project/kabbes-the-garden)
 
 # the_garden
 A build of commonly-used open-source tools
 
-# Project Description
-A collection of Python packages used collectively to ease the pains of team development.
+<br> 
 
-# Installing
-To install for the first time:
-```
-pip install kabbes_the_garden
+# Installation
+`pip install kabbes_the_garden`
+
+<br>
+
+# Usage
+For more in-depth documentation, read the information provided on the Pages. Or better yet, read the source code.
+
+## Python Script
+
+```python
+import the_garden
 ```
 
-To upgrade an installation
-```
-pip install kabbes_the_garden --upgrade
+```python
+print (the_garden.github_accounts)
 ```
 
-# Author(s)
+## Terminal
+
+
+```
+python -m the_garden
+```
+
+<br>
+
+# Author
 James Kabbes
